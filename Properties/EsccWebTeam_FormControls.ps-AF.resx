@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ErrorAddressBlank" xml:space="preserve">
+    <value>مهرباڼي وکړﺉ یوه پته داخله کړﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorAddressPostcodeOnly" xml:space="preserve">
+    <value>هیله ده چې د خپل ادرس د بشپړولو له پاره ادرس ولټوﺉ 'پته ومومﺉ'  کلیک کړﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorSaonFormat" xml:space="preserve">
+    <value>ستاسو د ادرس په لومړۍ کرښه کې ځینې حرفونو ته اجازه نشته</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorPaonFormat" xml:space="preserve">
+    <value>ستاسو د ادرس په دویمه کرښه کې ځینې حرفونو ته اجازه نشته</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorStreetDescriptorFormat" xml:space="preserve">
+    <value>ستاسو د ادرس په درېیمه کرښه کې ځینې حرفونو ته اجازه نشته</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorLocalityFormat" xml:space="preserve">
+    <value>ستاسو د ادرس په څلورمه کرښه کې ځینې حرفونو ته اجازه نشته</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorTownFormat" xml:space="preserve">
+    <value>د ښار په نوم کې ځینې حرفونو ته اجازه نشته</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorAdministrativeAreaFormat" xml:space="preserve">
+    <value>د ولسوالۍ په نوم کې ځینې حرفونو ته اجازه نشته</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorSaonLength" xml:space="preserve">
+    <value>هیله ده چې د خپل ادرس په لومړۍ کرښه کې ۱۰۰ یا لږحرفونه وکاروﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorPaonLength" xml:space="preserve">
+    <value>هیله ده چې د خپل ادرس په دویمه کرښه کې ۱۰۰ یا لږحرفونه وکاروﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorStreetDescriptorLength" xml:space="preserve">
+    <value>هیله ده چې د خپل ادرس په درېیمه کرښه کې ۱۰۰ یا لږحرفونه وکاروﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorLocalityLength" xml:space="preserve">
+    <value>هیله ده چې د خپل ادرس په څلورمه کرښه کې ۳۵ یا لږ حرفونه وکاروﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorTownLength" xml:space="preserve">
+    <value>هیله ده چې د ښار په نوم کې ۳۰ یا  تر دې لږ حرفونه وکاروﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorAdministrativeAreaLength" xml:space="preserve">
+    <value>هیله ده چې د ولسوالۍ په نوم کې ۳۰ یا  تر دې لږ حرفونه وکاروﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="FindAddressIntro" xml:space="preserve">
+    <value>که تاسو د ایسټ ساسیکس پسټ کوډ لرﺉ، په لاندې تش ځای کې یې ټایپ کړﺉ او د خپل ادرس د جزیاتو د بشپړولو له پاره ‘پته ومومﺉ’ تڼۍ وکاروﺉ.</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="AdministrativeAreaLabel" xml:space="preserve">
+    <value>برخه</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ButtonFindAddress" xml:space="preserve">
+    <value>پته ومومﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ConfirmAddress" xml:space="preserve">
+    <value>د پتې پخلی وکړﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorPostcodeRequired" xml:space="preserve">
+    <value>مهرباني وکړﺉ یو پوسټکوډ داخل کړﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorRecheckAddress" xml:space="preserve">
+    <value>مهرباني وکړﺉ ځان ډاډه کړﺉ چې East Sussex پوستکوډ مو په سمه توګه داخل کړﺉ او یا مو خپله پته له لارښونې سره سمه زیاته کړې ده</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="FindAddressOr" xml:space="preserve">
+    <value>یا</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="LocalityLabel" xml:space="preserve">
+    <value>کلی یا د ښار یوه برخه</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ManualAddress" xml:space="preserve">
+    <value>یو ادرس په لاس داخل کړﺉ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="PaonLabel" xml:space="preserve">
+    <value>نوم او شمېره جوړول</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="PostcodeLabel" xml:space="preserve">
+    <value>پسټ کوډ</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="SaonLabel" xml:space="preserve">
+    <value>د اپارتمان شمېره یا شرکت</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="SelectAddress" xml:space="preserve">
+    <value>مهرباني وکړﺉ سمه پته غوره کړﺉ:</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="StreetLabel" xml:space="preserve">
+    <value>د سړک نوم</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="TownLabel" xml:space="preserve">
+    <value>ښار</value>
+    <comment>Find Address control</comment>
+  </data>
+  <data name="ErrorPostcodeNotFound" xml:space="preserve">
+    <value>د داخل شوي پوسټکوډ لپاره کومه پته ونه موندل شوه</value>
+    <comment>Find Address control</comment>
+  </data>
+</root>
