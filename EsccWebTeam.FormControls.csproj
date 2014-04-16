@@ -289,7 +289,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <None Include="app.example.config" />
-    <None Include="app.config" />
     <None Include="FormDataSet.xsc">
       <DependentUpon>FormDataSet.xsd</DependentUpon>
     </None>
