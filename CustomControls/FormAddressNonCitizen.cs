@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using eastsussexgovuk.webservices.FormControls.Validators;
 using EsccWebTeam.Exceptions.Soap;
 using EsccWebTeam.FormControls.AddressFinder;
+using EsccWebTeam.FormControls.CustomControls;
 using EsccWebTeam.FormControls.Properties;
 using EsccWebTeam.Gdsc;
 using EsccWebTeam.HouseStyle;
@@ -1103,7 +1104,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
         /// Handles the PostcodeSubmitted event of the Message control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="eastsussexgovuk.webservices.FormControls.CustomControls.PostcodeSearchEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="PostcodeSearchEventArgs"/> instance containing the event data.</param>
         protected void Message_PostcodeSubmitted(object sender, PostcodeSearchEventArgs e)
         {
             if (e.Postcode.Length > 0)

@@ -330,12 +330,4 @@
     <value>No addresses were found for the postcode supplied</value>
     <comment>Find Address control</comment>
   </data>
-  <data name="ErrorMustBeEmpty" xml:space="preserve">
-    <value>'{0}' must be left blank</value>
-    <comment>Anti-spam validation</comment>
-  </data>
-  <data name="AntiSpamLabel" xml:space="preserve">
-    <value>Ignore this if you are human</value>
-    <comment>Anti-spam validation</comment>
-  </data>
 </root>
