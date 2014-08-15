@@ -9,11 +9,11 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using eastsussexgovuk.webservices.FormControls.Validators;
+using Escc.AddressAndPersonalDetails;
 using EsccWebTeam.Exceptions.Soap;
 using EsccWebTeam.FormControls.AddressFinder;
 using EsccWebTeam.FormControls.CustomControls;
 using EsccWebTeam.FormControls.Properties;
-using EsccWebTeam.Gdsc;
 using EsccWebTeam.HouseStyle;
 
 namespace eastsussexgovuk.webservices.FormControls.CustomControls
