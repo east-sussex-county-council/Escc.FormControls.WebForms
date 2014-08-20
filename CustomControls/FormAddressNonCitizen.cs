@@ -10,7 +10,6 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using eastsussexgovuk.webservices.FormControls.Validators;
 using Escc.AddressAndPersonalDetails;
-using EsccWebTeam.Exceptions.Soap;
 using EsccWebTeam.FormControls.AddressFinder;
 using EsccWebTeam.FormControls.CustomControls;
 using EsccWebTeam.FormControls.Properties;
@@ -1058,10 +1057,10 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
                     {
                         ds = addressfinder.AddressesFromPostcode(this.tbxPostcode.Text);
                     }
-                    catch (SoapException soapException)
+                    catch (SoapException)
                     {
-                        SoapExceptionHelper helper = new SoapExceptionHelper(soapException);
-                        lblMessage.Text = helper.Message;
+                        // web service returns the same message for all exceptions - we can localise
+                        lblMessage.Text = TextUtilities.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
                         return;
                     }
                 }
@@ -1117,21 +1116,10 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
                     ds = addressfinder.AddressesFromPostcode(e.Postcode);
 
                 }
-                catch (SoapException soapException)
+                catch (SoapException)
                 {
-                    SoapExceptionHelper helper = new SoapExceptionHelper(soapException);
-
-                    // for expected messages, we can localise
-                    switch (helper.Message)
-                    {
-                        case "No addresses were found for the postcode supplied.":
-                            lblMessage.Text = TextUtilities.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
-                            break;
-                        default:
-                            lblMessage.Text = helper.Message;
-                            break;
-                    }
-
+                    // web service returns the same message for all exceptions - we can localise
+                    lblMessage.Text = TextUtilities.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
                     return;
                 }
 
