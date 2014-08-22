@@ -4,6 +4,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using eastsussexgovuk.webservices.FormControls.Validators;
+using EsccWebTeam.FormControls;
 using EsccWebTeam.FormControls.Properties;
 using EsccWebTeam.HouseStyle;
 
@@ -329,7 +330,7 @@ namespace eastsussexgovuk.webservices.FormControls
             {
                 if (value <= 0)
                 {
-                    ArgumentOutOfRangeException ex = new ArgumentOutOfRangeException(String.Empty, TextUtilities.ResourceString(resourceFileName, "ErrorMinuteInterval", EsccWebTeam_FormControls.ErrorMinuteInterval));
+                    ArgumentOutOfRangeException ex = new ArgumentOutOfRangeException(String.Empty, LocalisedResourceReader.ResourceString(resourceFileName, "ErrorMinuteInterval", EsccWebTeam_FormControls.ErrorMinuteInterval));
                     throw ex;
                 }
                 this.minInterval = value;
@@ -590,7 +591,7 @@ namespace eastsussexgovuk.webservices.FormControls
             string tidyLabel = this.label.Replace(" ", "").Replace("(", "").Replace(")", "");
 
             // set up days
-            dayList.Attributes["title"] = TextUtilities.ResourceString(resourceFileName, "DaySelectPopupText", EsccWebTeam_FormControls.DaySelectPopupText);
+            dayList.Attributes["title"] = LocalisedResourceReader.ResourceString(resourceFileName, "DaySelectPopupText", EsccWebTeam_FormControls.DaySelectPopupText);
             if (this.ShowBlankDateOption) dayList.Items.Add(new ListItem());
             if (questionId != null && questionId.Length > 0)
             {
@@ -600,7 +601,7 @@ namespace eastsussexgovuk.webservices.FormControls
             {
                 dayList.ID = tidyLabel + "day";
             }
-            dayLabel.Text = TextUtilities.ResourceString(resourceFileName, "DatePartDayEntryPrompt", EsccWebTeam_FormControls.DatePartDayEntryPrompt);
+            dayLabel.Text = LocalisedResourceReader.ResourceString(resourceFileName, "DatePartDayEntryPrompt", EsccWebTeam_FormControls.DatePartDayEntryPrompt);
             dayLabel.AssociatedControlID = dayList.ID;
             for (short i = 1; i <= 31; i++)
             {
@@ -609,7 +610,7 @@ namespace eastsussexgovuk.webservices.FormControls
             }
 
             // set up months
-            monthList.Attributes["title"] = TextUtilities.ResourceString(resourceFileName, "MonthSelectPopupText", EsccWebTeam_FormControls.MonthSelectPopupText);
+            monthList.Attributes["title"] = LocalisedResourceReader.ResourceString(resourceFileName, "MonthSelectPopupText", EsccWebTeam_FormControls.MonthSelectPopupText);
             if (this.ShowBlankDateOption) monthList.Items.Add(new ListItem());
             if (questionId != null & questionId.Length > 0)
             {
@@ -619,7 +620,7 @@ namespace eastsussexgovuk.webservices.FormControls
             {
                 monthList.ID = tidyLabel + "month";
             }
-            monthLabel.Text = TextUtilities.ResourceString(resourceFileName, "DatePartMonthEntryPrompt", EsccWebTeam_FormControls.DatePartMonthEntryPrompt);
+            monthLabel.Text = LocalisedResourceReader.ResourceString(resourceFileName, "DatePartMonthEntryPrompt", EsccWebTeam_FormControls.DatePartMonthEntryPrompt);
             monthLabel.AssociatedControlID = monthList.ID;
             string[] monthNames = System.Globalization.DateTimeFormatInfo.CurrentInfo.MonthNames;
             for (int i = 0; i < monthNames.Length; i++)
@@ -633,7 +634,7 @@ namespace eastsussexgovuk.webservices.FormControls
             }
 
             // set up year
-            yearList.Attributes["title"] = TextUtilities.ResourceString(resourceFileName, "YearSelectPopupText", EsccWebTeam_FormControls.YearSelectPopupText);
+            yearList.Attributes["title"] = LocalisedResourceReader.ResourceString(resourceFileName, "YearSelectPopupText", EsccWebTeam_FormControls.YearSelectPopupText);
             if (questionId != null & questionId.Length > 0)
             {
                 yearList.ID = yearList.ID + questionId;
@@ -642,7 +643,7 @@ namespace eastsussexgovuk.webservices.FormControls
             {
                 yearList.ID = tidyLabel + "year";
             }
-            yearLabel.Text = TextUtilities.ResourceString(resourceFileName, "DatePartYearEntryPrompt", EsccWebTeam_FormControls.DatePartYearEntryPrompt);
+            yearLabel.Text = LocalisedResourceReader.ResourceString(resourceFileName, "DatePartYearEntryPrompt", EsccWebTeam_FormControls.DatePartYearEntryPrompt);
             yearLabel.AssociatedControlID = yearList.ID;
             this.GenerateYearOptions();
 
@@ -676,7 +677,7 @@ namespace eastsussexgovuk.webservices.FormControls
 
             this.hourLabel = new Label();
             this.hourLabel.CssClass = "aural";
-            this.hourLabel.Text = TextUtilities.ResourceString(resourceFileName, "DatePartHourEntryPrompt", EsccWebTeam_FormControls.DatePartHourEntryPrompt);
+            this.hourLabel.Text = LocalisedResourceReader.ResourceString(resourceFileName, "DatePartHourEntryPrompt", EsccWebTeam_FormControls.DatePartHourEntryPrompt);
             this.hourLabel.AssociatedControlID = this.hourList.ID;
             for (int i = 1; i <= 12; i++)
             {
@@ -701,7 +702,7 @@ namespace eastsussexgovuk.webservices.FormControls
 
             this.minLabel = new Label();
             this.minLabel.CssClass = "aural";
-            this.minLabel.Text = TextUtilities.ResourceString(resourceFileName, "DatePartMinuteEntryPrompt", EsccWebTeam_FormControls.DatePartMinuteEntryPrompt);
+            this.minLabel.Text = LocalisedResourceReader.ResourceString(resourceFileName, "DatePartMinuteEntryPrompt", EsccWebTeam_FormControls.DatePartMinuteEntryPrompt);
             this.minLabel.AssociatedControlID = this.minList.ID;
             string minuteText;
             for (int i = 0; i <= 59; i = i + this.minInterval)
@@ -730,7 +731,7 @@ namespace eastsussexgovuk.webservices.FormControls
 
             this.amPMLabel = new Label();
             this.amPMLabel.CssClass = "aural";
-            this.amPMLabel.Text = TextUtilities.ResourceString(resourceFileName, "DatePartAMPMEntryPrompt", EsccWebTeam_FormControls.DatePartAMPMEntryPrompt);
+            this.amPMLabel.Text = LocalisedResourceReader.ResourceString(resourceFileName, "DatePartAMPMEntryPrompt", EsccWebTeam_FormControls.DatePartAMPMEntryPrompt);
             this.amPMLabel.AssociatedControlID = this.amPMList.ID;
 
 
@@ -1237,9 +1238,9 @@ namespace eastsussexgovuk.webservices.FormControls
                 }
 
                 // No message property defined yet for the partial date validators
-                this.vcDayReqMonthYear.ErrorMessage = TextUtilities.ResourceString(resourceFileName, "DateRequiresMoreThanDayError", EsccWebTeam_FormControls.DateRequiresMoreThanDayError);
-                this.vcMonthReqDayYear.ErrorMessage = TextUtilities.ResourceString(resourceFileName, "DateRequiresMoreThanMonthError", EsccWebTeam_FormControls.DateRequiresMoreThanMonthError);
-                this.vcYearReqDayMonth.ErrorMessage = TextUtilities.ResourceString(resourceFileName, "DateRequiresMoreThanYearError", EsccWebTeam_FormControls.DateRequiresMoreThanYearError);
+                this.vcDayReqMonthYear.ErrorMessage = LocalisedResourceReader.ResourceString(resourceFileName, "DateRequiresMoreThanDayError", EsccWebTeam_FormControls.DateRequiresMoreThanDayError);
+                this.vcMonthReqDayYear.ErrorMessage = LocalisedResourceReader.ResourceString(resourceFileName, "DateRequiresMoreThanMonthError", EsccWebTeam_FormControls.DateRequiresMoreThanMonthError);
+                this.vcYearReqDayMonth.ErrorMessage = LocalisedResourceReader.ResourceString(resourceFileName, "DateRequiresMoreThanYearError", EsccWebTeam_FormControls.DateRequiresMoreThanYearError);
 
                 // Enable/disable validators
                 this.validDay.Enabled = this.required;
@@ -1262,7 +1263,7 @@ namespace eastsussexgovuk.webservices.FormControls
                 // Error messages
                 this.validHour.ErrorMessage = this.hourRequiredMessage;
                 this.validMin.ErrorMessage = this.minuteRequiredMessage;
-                this.validHourMin1.ErrorMessage = (this.hourMinuteMessage != null && this.hourMinuteMessage.Length > 0) ? this.hourMinuteMessage : TextUtilities.ResourceString(resourceFileName, "ErrorHourMinuteRequireEachOther", EsccWebTeam_FormControls.ErrorHourMinuteRequireEachOther);
+                this.validHourMin1.ErrorMessage = (this.hourMinuteMessage != null && this.hourMinuteMessage.Length > 0) ? this.hourMinuteMessage : LocalisedResourceReader.ResourceString(resourceFileName, "ErrorHourMinuteRequireEachOther", EsccWebTeam_FormControls.ErrorHourMinuteRequireEachOther);
                 this.validHourMin2.ErrorMessage = this.validHourMin1.ErrorMessage;
 
                 // Enable/disable validators

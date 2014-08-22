@@ -179,6 +179,7 @@
     <Compile Include="RequiredFieldIndicator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LocalisedResourceReader.cs" />
     <Compile Include="Validators\EmailValidator.cs">
       <SubType>Code</SubType>
     </Compile>

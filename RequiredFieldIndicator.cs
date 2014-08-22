@@ -27,7 +27,7 @@ namespace EsccWebTeam.FormControls
 		protected override void OnInit(EventArgs e)
 		{
 			this.Attributes["class"] = "requiredField";
-            this.InnerText = TextUtilities.ResourceString(typeof(EsccWebTeam_FormControls).Name, "RequiredFieldIndicator", EsccWebTeam_FormControls.RequiredFieldIndicator);
+            this.InnerText = EsccWebTeam_FormControls.RequiredFieldIndicator;
 
 			base.OnInit (e);
 		}

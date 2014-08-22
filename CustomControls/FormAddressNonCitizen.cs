@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using eastsussexgovuk.webservices.FormControls.Validators;
 using Escc.AddressAndPersonalDetails;
+using EsccWebTeam.FormControls;
 using EsccWebTeam.FormControls.AddressFinder;
 using EsccWebTeam.FormControls.CustomControls;
 using EsccWebTeam.FormControls.Properties;
@@ -403,32 +404,32 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
             //Allow default messages to be bypased by eforms system setting them
             if (this.messageAddressRequired.Length == 0)
             {
-                this.messageAddressRequired = TextUtilities.ResourceString(resourceFileName, "ErrorAddressBlank", EsccWebTeam_FormControls.ErrorAddressBlank);
+                this.messageAddressRequired = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorAddressBlank", EsccWebTeam_FormControls.ErrorAddressBlank);
             }
             if (this.messageFullAddressRequired.Length == 0)
             {
-                this.messageFullAddressRequired = TextUtilities.ResourceString(resourceFileName, "ErrorAddressPostcodeOnly", EsccWebTeam_FormControls.ErrorAddressPostcodeOnly);
+                this.messageFullAddressRequired = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorAddressPostcodeOnly", EsccWebTeam_FormControls.ErrorAddressPostcodeOnly);
             }
             // Set up default messages
             //this.messageAddressRequired = TextUtilities.ResourceString(resourceFileName, "", EsccWebTeam_FormControls.ErrorAddressBlank;
             //this.messageFullAddressRequired = TextUtilities.ResourceString(resourceFileName, "", EsccWebTeam_FormControls.ErrorAddressPostcodeOnly;
-            this.textIntro = TextUtilities.ResourceString(resourceFileName, "FindAddressIntro", TextUtilities.ResourceString(resourceFileName, "FindAddressIntro", EsccWebTeam_FormControls.FindAddressIntro));
+            this.textIntro = LocalisedResourceReader.ResourceString(resourceFileName, "FindAddressIntro", LocalisedResourceReader.ResourceString(resourceFileName, "FindAddressIntro", EsccWebTeam_FormControls.FindAddressIntro));
 
             // Length
-            this.messageSaonLength = TextUtilities.ResourceString(resourceFileName, "ErrorSaonLength", EsccWebTeam_FormControls.ErrorSaonLength);
-            this.messagePaonLength = TextUtilities.ResourceString(resourceFileName, "ErrorPaonLength", EsccWebTeam_FormControls.ErrorPaonLength);
-            this.messageStreetDescriptorLength = TextUtilities.ResourceString(resourceFileName, "ErrorStreetDescriptorLength", EsccWebTeam_FormControls.ErrorStreetDescriptorLength);
-            this.messageLocalityLength = TextUtilities.ResourceString(resourceFileName, "ErrorLocalityLength", EsccWebTeam_FormControls.ErrorLocalityLength);
-            this.messageTownLength = TextUtilities.ResourceString(resourceFileName, "ErrorTownLength", EsccWebTeam_FormControls.ErrorTownLength);
-            this.messageAdministrativeAreaLength = TextUtilities.ResourceString(resourceFileName, "ErrorAdministrativeAreaLength", EsccWebTeam_FormControls.ErrorAdministrativeAreaLength);
+            this.messageSaonLength = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorSaonLength", EsccWebTeam_FormControls.ErrorSaonLength);
+            this.messagePaonLength = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorPaonLength", EsccWebTeam_FormControls.ErrorPaonLength);
+            this.messageStreetDescriptorLength = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorStreetDescriptorLength", EsccWebTeam_FormControls.ErrorStreetDescriptorLength);
+            this.messageLocalityLength = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorLocalityLength", EsccWebTeam_FormControls.ErrorLocalityLength);
+            this.messageTownLength = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorTownLength", EsccWebTeam_FormControls.ErrorTownLength);
+            this.messageAdministrativeAreaLength = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorAdministrativeAreaLength", EsccWebTeam_FormControls.ErrorAdministrativeAreaLength);
 
             // Format
-            this.messageSaonFormat = TextUtilities.ResourceString(resourceFileName, "ErrorSaonFormat", EsccWebTeam_FormControls.ErrorSaonFormat);
-            this.messagePaonFormat = TextUtilities.ResourceString(resourceFileName, "ErrorPaonFormat", EsccWebTeam_FormControls.ErrorPaonFormat);
-            this.messageStreetDescriptorFormat = TextUtilities.ResourceString(resourceFileName, "ErrorStreetDescriptorFormat", EsccWebTeam_FormControls.ErrorStreetDescriptorFormat);
-            this.messageLocalityFormat = TextUtilities.ResourceString(resourceFileName, "ErrorLocalityFormat", EsccWebTeam_FormControls.ErrorLocalityFormat);
-            this.messageTownFormat = TextUtilities.ResourceString(resourceFileName, "ErrorTownFormat", EsccWebTeam_FormControls.ErrorTownFormat);
-            this.messageAdministrativeAreaFormat = TextUtilities.ResourceString(resourceFileName, "ErrorAdministrativeAreaFormat", EsccWebTeam_FormControls.ErrorAdministrativeAreaFormat);
+            this.messageSaonFormat = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorSaonFormat", EsccWebTeam_FormControls.ErrorSaonFormat);
+            this.messagePaonFormat = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorPaonFormat", EsccWebTeam_FormControls.ErrorPaonFormat);
+            this.messageStreetDescriptorFormat = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorStreetDescriptorFormat", EsccWebTeam_FormControls.ErrorStreetDescriptorFormat);
+            this.messageLocalityFormat = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorLocalityFormat", EsccWebTeam_FormControls.ErrorLocalityFormat);
+            this.messageTownFormat = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorTownFormat", EsccWebTeam_FormControls.ErrorTownFormat);
+            this.messageAdministrativeAreaFormat = LocalisedResourceReader.ResourceString(resourceFileName, "ErrorAdministrativeAreaFormat", EsccWebTeam_FormControls.ErrorAdministrativeAreaFormat);
 
 
             base.OnInit(e);
@@ -763,7 +764,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
             // Add SAON field
             this.labelSaon = new Label();
-            this.labelSaon.Text = TextUtilities.ResourceString(this.resourceFileName, "SaonLabel", EsccWebTeam_FormControls.SaonLabel);
+            this.labelSaon.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "SaonLabel", EsccWebTeam_FormControls.SaonLabel);
             this.labelSaon.CssClass = "aural";
             tbxSaon.CssClass = "saon";
             this.addressFields.Controls.Add(lcfp1a);
@@ -774,7 +775,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
             // Add PAON field
             this.labelPaon = new Label();
-            this.labelPaon.Text = TextUtilities.ResourceString(this.resourceFileName, "PaonLabel", EsccWebTeam_FormControls.PaonLabel);
+            this.labelPaon.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "PaonLabel", EsccWebTeam_FormControls.PaonLabel);
             this.labelPaon.CssClass = "aural";
             tbxPaon.CssClass = "paon";
             this.addressFields.Controls.Add(lcfp2a);
@@ -785,7 +786,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
             // Add street descriptor field
             this.labelStreetDescriptor = new Label();
-            this.labelStreetDescriptor.Text = TextUtilities.ResourceString(this.resourceFileName, "StreetLabel", EsccWebTeam_FormControls.StreetLabel);
+            this.labelStreetDescriptor.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "StreetLabel", EsccWebTeam_FormControls.StreetLabel);
             this.labelStreetDescriptor.CssClass = "aural";
             tbxStreetDescriptor.CssClass = "street";
             this.addressFields.Controls.Add(lcfp3a);
@@ -796,7 +797,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
             // Add locality field
             this.labelLocality = new Label();
-            this.labelLocality.Text = TextUtilities.ResourceString(this.resourceFileName, "LocalityLabel", EsccWebTeam_FormControls.LocalityLabel);
+            this.labelLocality.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "LocalityLabel", EsccWebTeam_FormControls.LocalityLabel);
             this.labelLocality.CssClass = "aural";
             tbxLocality.CssClass = "locality";
             this.addressFields.Controls.Add(lcfp4a);
@@ -807,7 +808,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
             // Add town field
             Label townLabel = new Label();
-            townLabel.Text = TextUtilities.ResourceString(this.resourceFileName, "TownLabel", EsccWebTeam_FormControls.TownLabel);
+            townLabel.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "TownLabel", EsccWebTeam_FormControls.TownLabel);
             townLabel.CssClass = "formLabel";
             tbxTown.CssClass = "town";
             this.addressFields.Controls.Add(lcfp5a);
@@ -818,7 +819,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
             // Add administrative area field
             Label adminLabel = new Label();
-            adminLabel.Text = TextUtilities.ResourceString(this.resourceFileName, "AdministrativeAreaLabel", EsccWebTeam_FormControls.AdministrativeAreaLabel);
+            adminLabel.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "AdministrativeAreaLabel", EsccWebTeam_FormControls.AdministrativeAreaLabel);
             adminLabel.CssClass = "formLabel";
             tbxAdministrativeArea.CssClass = "administrative-area";
             this.addressFields.Controls.Add(lcfp6a);
@@ -829,7 +830,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
             // Add postcode field
             Label postcodeLabel = new Label();
-            postcodeLabel.Text = TextUtilities.ResourceString(this.resourceFileName, "PostcodeLabel", EsccWebTeam_FormControls.PostcodeLabel);
+            postcodeLabel.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "PostcodeLabel", EsccWebTeam_FormControls.PostcodeLabel);
             postcodeLabel.CssClass = "formLabel";
             this.Controls.Add(lcpca);
             this.Controls.Add(postcodeLabel);
@@ -858,21 +859,21 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
 
             imgbtnFind.ID = "findAddress"; // ID added to avoid ctl number mismatches on postback - RM 13/10/06
-            imgbtnFind.CssClass = TextUtilities.ResourceString(this.resourceFileName, "ButtonFindAddressClass", EsccWebTeam_FormControls.ButtonFindAddressClass);
+            imgbtnFind.CssClass = LocalisedResourceReader.ResourceString(this.resourceFileName, "ButtonFindAddressClass", EsccWebTeam_FormControls.ButtonFindAddressClass);
             this.Controls.Add(imgbtnFind);
             this.imgbtnFind.CausesValidation = false;
-            this.imgbtnFind.Text = TextUtilities.ResourceString(this.resourceFileName, "ButtonFindAddress", EsccWebTeam_FormControls.ButtonFindAddress);
+            this.imgbtnFind.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ButtonFindAddress", EsccWebTeam_FormControls.ButtonFindAddress);
             this.imgbtnFind.Click += new EventHandler(imgbtnFind_Click);
 
-            this.orText = new LiteralControl("<span class=\"addressButton\">&nbsp;" + TextUtilities.ResourceString(this.resourceFileName, "FindAddressOr", EsccWebTeam_FormControls.FindAddressOr) + "&nbsp;</span>");
+            this.orText = new LiteralControl("<span class=\"addressButton\">&nbsp;" + LocalisedResourceReader.ResourceString(this.resourceFileName, "FindAddressOr", EsccWebTeam_FormControls.FindAddressOr) + "&nbsp;</span>");
             this.Controls.Add(this.orText);
 
 
             this.Controls.Add(imbAddressToggle);
             this.imbAddressToggle.ID = "manualAddress"; // ID added to avoid ctl number mismatches on postback - RM 13/10/06
-            this.imbAddressToggle.CssClass = TextUtilities.ResourceString(this.resourceFileName, "ButtonManualAddressClass", EsccWebTeam_FormControls.ButtonManualAddressClass);
+            this.imbAddressToggle.CssClass = LocalisedResourceReader.ResourceString(this.resourceFileName, "ButtonManualAddressClass", EsccWebTeam_FormControls.ButtonManualAddressClass);
             this.imbAddressToggle.CausesValidation = false;
-            this.imbAddressToggle.Text = TextUtilities.ResourceString(this.resourceFileName, "ManualAddress", EsccWebTeam_FormControls.ManualAddress);
+            this.imbAddressToggle.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ManualAddress", EsccWebTeam_FormControls.ManualAddress);
             this.imbAddressToggle.Click += new EventHandler(imbAddressToggle_Click);
 
             this.Controls.Add(lcfp7b);
@@ -889,7 +890,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
             Label choiceLabel = new Label();
             choiceLabel.CssClass = "formPart";
-            choiceLabel.Text = TextUtilities.ResourceString(this.resourceFileName, "SelectAddress", EsccWebTeam_FormControls.SelectAddress);
+            choiceLabel.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "SelectAddress", EsccWebTeam_FormControls.SelectAddress);
             this.selectAddress.Controls.Add(choiceLabel);
 
             this.selectAddress.Controls.Add(lc2a);
@@ -898,10 +899,10 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
             choiceLabel.AssociatedControlID = lbxAddressChoices.ID;
 
             imgbtnConfirmAddress.ID = "imgbtnConfirmAddress";
-            imgbtnConfirmAddress.CssClass = TextUtilities.ResourceString(this.resourceFileName, "ButtonConfirmAddressClass", EsccWebTeam_FormControls.ButtonConfirmAddressClass);
+            imgbtnConfirmAddress.CssClass = LocalisedResourceReader.ResourceString(this.resourceFileName, "ButtonConfirmAddressClass", EsccWebTeam_FormControls.ButtonConfirmAddressClass);
             this.selectAddress.Controls.Add(imgbtnConfirmAddress);
             this.imgbtnConfirmAddress.CausesValidation = false;
-            this.imgbtnConfirmAddress.Text = TextUtilities.ResourceString(this.resourceFileName, "ConfirmAddress", EsccWebTeam_FormControls.ConfirmAddress);
+            this.imgbtnConfirmAddress.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ConfirmAddress", EsccWebTeam_FormControls.ConfirmAddress);
             this.imgbtnConfirmAddress.Click += new EventHandler(imgbtnConfirmAddress_Click);
 
             this.selectAddress.Controls.Add(lc2b);
@@ -1060,7 +1061,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
                     catch (SoapException)
                     {
                         // web service returns the same message for all exceptions - we can localise
-                        lblMessage.Text = TextUtilities.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
+                        lblMessage.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
                         return;
                     }
                 }
@@ -1119,7 +1120,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
                 catch (SoapException)
                 {
                     // web service returns the same message for all exceptions - we can localise
-                    lblMessage.Text = TextUtilities.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
+                    lblMessage.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
                     return;
                 }
 
@@ -1127,11 +1128,11 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
                 {
                     if (this.enableValidaton)
                     {
-                        new EsccWebTeam.FormControls.Validators.ValidationMessage(TextUtilities.ResourceString(this.resourceFileName, "ErrorRecheckAddress", EsccWebTeam_FormControls.ErrorRecheckAddress), this.Page);
+                        new EsccWebTeam.FormControls.Validators.ValidationMessage(LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorRecheckAddress", EsccWebTeam_FormControls.ErrorRecheckAddress), this.Page);
                     }
                     else
                     {
-                        lblMessage.Text = TextUtilities.ResourceString(this.resourceFileName, "ErrorRecheckAddress", EsccWebTeam_FormControls.ErrorRecheckAddress);
+                        lblMessage.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorRecheckAddress", EsccWebTeam_FormControls.ErrorRecheckAddress);
                     }
                 }
                 else
@@ -1146,11 +1147,11 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
             {
                 if (this.enableValidaton)
                 {
-                    new EsccWebTeam.FormControls.Validators.ValidationMessage(TextUtilities.ResourceString(this.resourceFileName, "ErrorPostcodeMissing", EsccWebTeam_FormControls.ErrorPostcodeRequired), this.Page);
+                    new EsccWebTeam.FormControls.Validators.ValidationMessage(LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorPostcodeMissing", EsccWebTeam_FormControls.ErrorPostcodeRequired), this.Page);
                 }
                 else
                 {
-                    lblMessage.Text = TextUtilities.ResourceString(this.resourceFileName, "ErrorPostcodeMissing", EsccWebTeam_FormControls.ErrorPostcodeRequired);
+                    lblMessage.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorPostcodeMissing", EsccWebTeam_FormControls.ErrorPostcodeRequired);
                 }
             }
         }
@@ -1300,7 +1301,7 @@ namespace eastsussexgovuk.webservices.FormControls.CustomControls
 
                     Label error = new Label();
                     error.CssClass = "warning";
-                    error.Text = TextUtilities.ResourceString(this.resourceFileName, "ErrorAddressBlank", EsccWebTeam_FormControls.ErrorAddressBlank);
+                    error.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorAddressBlank", EsccWebTeam_FormControls.ErrorAddressBlank);
                     this.Controls.AddAt(0, error);
                 }
             }
