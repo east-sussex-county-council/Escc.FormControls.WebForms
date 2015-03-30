@@ -1,14 +1,13 @@
-Escc.FormControls
-=================
+# Escc.FormControls.WebForms
 
-A library for managing forms on the web using ASP.NET WebForms.
+Generic form controls and validators for use on WebForms pages. In some cases this library adds custom functionality. In other cases it simply applies our default settings to otherwise standard ASP.NET controls.
 
-Eforms application
-------------------
+One recommended way to apply these controls to you pages is to use the `tagMapping` section in `web.config`, which lets you state that, for example, all `asp:Button` controls should be replaced by a `FormControls:EsccButton`, ensuring none are missed.
 
-The `CustomControls` and `genericforms` folders are mostly code for our generic eforms system, which allows expert users to create new forms using a separate designer tool.
-
-Form fields and validators
---------------------------
-
-The remaining classes are designed for use on any WebForms page. In some cases they add custom functionality. In other cases they simply apply our default settings to otherwise standard ASP.NET controls.
+	  <system.web>
+	    <pages>
+	      <tagMapping>
+	        <add tagType="System.Web.UI.WebControls.Button" mappedTagType="Escc.FormControls.WebForms.EsccButton, Escc.FormControls.WebForms" />
+	      </tagMapping>
+	    </pages>
+	  </system.web>
