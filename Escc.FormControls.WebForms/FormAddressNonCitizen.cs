@@ -846,7 +846,6 @@ namespace Escc.FormControls.WebForms
             // and that means IE won't fire the .NET click event
             TextBox ieBugFix = new TextBox();
             ieBugFix.CssClass = "ieBugFix";
-            ieBugFix.Attributes["style"] = "display:none;";
             this.Controls.Add(ieBugFix);
 
             this.Controls.Add(lcfp7a);
