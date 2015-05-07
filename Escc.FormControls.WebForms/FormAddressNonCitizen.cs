@@ -1,6 +1,8 @@
 using System;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -1051,6 +1053,12 @@ namespace Escc.FormControls.WebForms
                 {
                     try
                     {
+                        if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesAccount"]) &&
+                                    !String.IsNullOrEmpty(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesPassword"]))
+                        {
+                            addressfinder.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesAccount"], ConfigurationManager.AppSettings["ConnectToCouncilWebServicesPassword"]);
+                        }
+
                         ds = addressfinder.AddressesFromPostcode(this.tbxPostcode.Text);
                     }
                     catch (SoapException)
@@ -1104,12 +1112,20 @@ namespace Escc.FormControls.WebForms
         {
             if (e.Postcode.Length > 0)
             {
-                lblMessage.Text = "";
-                var addressfinder = new AddressFinder.AddressFinder();
+                lblMessage.Text = String.Empty;
                 DataSet ds = null;
                 try
                 {
-                    ds = addressfinder.AddressesFromPostcode(e.Postcode);
+                    using (var addressfinder = new AddressFinder.AddressFinder())
+                    {
+                        if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesAccount"]) &&
+                            !String.IsNullOrEmpty(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesPassword"]))
+                        {
+                            addressfinder.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesAccount"], ConfigurationManager.AppSettings["ConnectToCouncilWebServicesPassword"]);
+                        }
+
+                        ds = addressfinder.AddressesFromPostcode(e.Postcode);
+                    }
 
                 }
                 catch (SoapException)
