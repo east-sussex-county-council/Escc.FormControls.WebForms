@@ -11,3 +11,5 @@ One recommended way to apply these controls to you pages is to use the `tagMappi
 	      </tagMapping>
 	    </pages>
 	  </system.web>
+
+Some controls are translated into multiple languages, including Kurdish Sorani. The Kurdish culture is not installed on Windows by default. The code to create and install it can be found in the `Escc.ContactUs.Website` project, with the form for which these controls were translated. 
