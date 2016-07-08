@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 using System.Web.UI.WebControls;
-using EsccWebTeam.Data.Web;
+using Escc.Html;
 
 namespace Escc.FormControls.WebForms.Validators
 {
@@ -120,7 +120,7 @@ namespace Escc.FormControls.WebForms.Validators
                 textToValidate = control.GetType().GetProperty(PropertyToValidate).GetValue(control, null) as string;
             }
 
-            textToValidate = Html.StripTags(textToValidate);
+            textToValidate = new HtmlTagSantiser().StripTags(textToValidate);
 
             // get rid of line breaks
             textToValidate = Regex.Replace(textToValidate, "\r", " ");
