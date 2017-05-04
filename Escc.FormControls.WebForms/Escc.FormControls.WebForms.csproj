@@ -102,6 +102,14 @@
       <HintPath>..\packages\Escc.Html.2.0.0\lib\Escc.Html.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net35\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -127,6 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressConfirmedEventArgs.cs" />
+    <Compile Include="IAddressLookup.cs" />
+    <Compile Include="LocateApiAddressResult.cs" />
+    <Compile Include="LocateApiPostcodeLookup.cs" />
     <Compile Include="PostcodeSearchEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -168,11 +179,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EsccWebTeam_FormControls.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="RequiredFieldIndicator.cs">
       <SubType>Code</SubType>
@@ -233,19 +239,7 @@
     <Compile Include="Validators\WordCountValidator.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Web References\AddressFinder\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <None Include="app.config" />
-    <None Include="app.example.config" />
     <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <EmbeddedResource Include="Properties\EsccWebTeam_FormControls.zh-CHS.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -278,37 +272,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EsccWebTeam_FormControls1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Web References\AddressFinder\AddressFinder.wsdl" />
-    <None Include="Web References\AddressFinder\AggregateEN.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\AddressFinder\GeoPoint.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\AddressFinder\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost/GeoInfoServices/AddressFinder.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\AddressFinder\</RelPath>
-      <UpdateFromURL>http://localhost/GeoInfoServices/AddressFinder.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Escc_FormControls_WebForms_AddressFinder_AddressFinder</CachedSettingsPropName>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\AddressFinder\AddressFinder.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <system.web>
+    <pages>
+      <controls>
+        <add namespace="Escc.FormControls.WebForms" xdt:Transform="Remove" xdt:Locator="Match(namespace)" />
+        <add namespace="Escc.FormControls.WebForms.Validators" xdt:Transform="Remove" xdt:Locator="Match(namespace)" />
+      </controls>
+      <controls xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+    </pages>
+    <pages xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0 and count(@*) = 0)" />
+  </system.web>
+  <system.web xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+</configuration>

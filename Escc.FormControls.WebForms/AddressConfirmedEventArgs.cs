@@ -7,38 +7,21 @@ namespace Escc.FormControls.WebForms
     /// </summary>
     public class AddressConfirmedEventArgs : EventArgs
     {
-        #region Fields
-
         /// <summary>
-        /// Store submitted oid
+        /// Gets or sets the Unique Property Reference Number.
         /// </summary>
-        private string oid;
-        #endregion
-        #region properties
-        /// <summary>
-        /// Public property.
-        /// </summary>
-        public string Oid
-        {
-            get
-            {
-                return oid;
-            }
-            set
-            {
-                oid = value;
-            }
-        }
-        #endregion
-        #region constructors
+        /// <value>
+        /// The uprn.
+        /// </value>
+        public string Uprn { get; set; }
+        
         /// <summary>
         /// Event arguments for <c>AddressConfirmed</c> event
         /// </summary>
-        /// <param name="oid"></param>
-        public AddressConfirmedEventArgs(string oid)
+        /// <param name="uprn"></param>
+        public AddressConfirmedEventArgs(string uprn)
         {
-            this.Oid = oid;
+            this.Uprn = uprn;
         }
-        #endregion
     }
 }

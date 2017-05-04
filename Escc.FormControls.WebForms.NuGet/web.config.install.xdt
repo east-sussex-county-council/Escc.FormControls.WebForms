@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <!-- There's no command for "insert if missing" whe used outside NuGet so this transform uses a workaround to ensure it'll work on any config file that has at least the root <configuration /> element.
+       The workaround is to insert the element you want regardless of whether it's already there, and if there are now two remove the second one. 
+       -->
+  <system.web xdt:Transform="Insert" />
+  <system.web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web[2])" />
+
+  <system.web>
+    <pages xdt:Transform="Insert" />
+    <pages xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/pages[2])" />
+    <pages>
+      <controls xdt:Transform="Insert" />
+      <controls xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/pages/controls[2])" />
+      <controls>
+        <add namespace="Escc.FormControls.WebForms" xdt:Transform="Remove" xdt:Locator="Match(namespace)" />
+        <add tagPrefix="FormControls" namespace="Escc.FormControls.WebForms" assembly="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" xdt:Transform="Insert" />
+        <add namespace="Escc.FormControls.WebForms.Validators" xdt:Transform="Remove" xdt:Locator="Match(namespace)" />
+        <add tagPrefix="FormControls" namespace="Escc.FormControls.WebForms.Validators" assembly="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" xdt:Transform="Insert" />
+      </controls>
+    </pages>
+  </system.web>
+</configuration>

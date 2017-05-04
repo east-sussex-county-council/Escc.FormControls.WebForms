@@ -23,5 +23,13 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config.install.xdt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="web.config.uninstall.xdt">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\NuBuild\v1\NuBuild.targets" />
 </Project>

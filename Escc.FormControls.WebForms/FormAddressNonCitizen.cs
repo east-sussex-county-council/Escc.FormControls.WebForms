@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -13,6 +15,7 @@ using System.Web.UI.WebControls;
 using Escc.AddressAndPersonalDetails;
 using Escc.FormControls.WebForms.Properties;
 using Escc.FormControls.WebForms.Validators;
+using Escc.Net;
 
 namespace Escc.FormControls.WebForms
 {
@@ -33,8 +36,8 @@ namespace Escc.FormControls.WebForms
         private TextBox tbxTown;
         private TextBox tbxAdministrativeArea;
         private TextBox tbxPostcode;
-        private HtmlInputHidden hidEasting;
-        private HtmlInputHidden hidNorthing;
+        private HtmlInputHidden hiddenLatitude;
+        private HtmlInputHidden hiddenLongitude;
         private string saon;
         private string paon;
         private string streetDescriptor;
@@ -42,10 +45,7 @@ namespace Escc.FormControls.WebForms
         private string town;
         private string administrativeArea;
         private string postcode;
-        private string easting;
-        private string northing;
         private string oa;
-        private string oid;
         private bool pafCheckValid;
         private EsccButton imgbtnConfirmAddress;
         private ListBox lbxAddressChoices;
@@ -177,34 +177,14 @@ namespace Escc.FormControls.WebForms
         }
 
         /// <summary>
-        /// Gets the easting coordinate of the selected address
+        /// Gets the latitude coordinate of the selected address
         /// </summary>
-        public string Easting
-        {
-            get
-            {
-                return easting;
-            }
-            set
-            {
-                easting = value;
-            }
-        }
+        public string Latitude { get; set; }
 
         /// <summary>
-        /// Gets the northing coordinate of the selected address
+        /// Gets the longitude coordinate of the selected address
         /// </summary>
-        public string Northing
-        {
-            get
-            {
-                return northing;
-            }
-            set
-            {
-                northing = value;
-            }
-        }
+        public string Longitude { get; set; }
 
         public string OA
         {
@@ -213,13 +193,13 @@ namespace Escc.FormControls.WebForms
                 return oa;
             }
         }
-        public string OID
-        {
-            get
-            {
-                return oid;
-            }
-        }
+        /// <summary>
+        /// Gets the Unique Property Reference Number (UPRN) of the selected address
+        /// </summary>
+        /// <value>
+        /// The UPRN.
+        /// </value>
+        public string Uprn { get; private set; }
 
         /// <summary>
         /// Gets or sets whether the selected address has been validated against the Post Office Address file (PAF)
@@ -338,17 +318,7 @@ namespace Escc.FormControls.WebForms
             get
             {
                 this.UpdateFields();
-                BS7666Address bs7666Address = new BS7666Address(this.Paon, this.Saon, this.StreetDescriptor, this.Locality, this.Town, this.AdministrativeArea, this.Postcode);
-                try
-                {
-                    bs7666Address.GridEasting = Convert.ToInt32(easting);
-                    bs7666Address.GridNorthing = Convert.ToInt32(northing);
-                }
-                catch
-                {
-                    // We don't need to do anything here. We just need to cater for Easting and Northing strings being empty.
-                }
-                return bs7666Address;
+                return new BS7666Address(this.Paon, this.Saon, this.StreetDescriptor, this.Locality, this.Town, this.AdministrativeArea, this.Postcode);
             }
             set
             {
@@ -362,6 +332,45 @@ namespace Escc.FormControls.WebForms
                     this.administrativeArea = value.AdministrativeArea;
                     this.postcode = value.Postcode;
                     this.UpdateTextboxes();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the selected address.
+        /// </summary>
+        /// <value>
+        /// The selected address
+        /// </value>
+        public AddressInfo AddressInfo
+        {
+            get
+            {
+                var address = new AddressInfo()
+                {
+                    BS7666Address = BS7666Address
+                };
+                try
+                {
+                    address.GeoCoordinate = new GeoCoordinate()
+                    {
+                        Latitude = Double.Parse(Latitude),
+                        Longitude = Double.Parse(Longitude)
+                    };
+                }
+                catch
+                {
+                    // We don't need to do anything here. We just need to cater for latitude and longitude strings being empty.
+                }
+                return address;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    BS7666Address = value.BS7666Address;
+                    Latitude = value.GeoCoordinate?.Latitude.ToString(CultureInfo.InvariantCulture);
+                    Longitude = value.GeoCoordinate?.Longitude.ToString(CultureInfo.InvariantCulture);
                 }
             }
         }
@@ -466,12 +475,10 @@ namespace Escc.FormControls.WebForms
             tbxPostcode.MaxLength = this.maxLengthPostcode;
             tbxPostcode.CssClass = "postcode";
 
-            //EXTEND for Eastings and Northings
-
-            hidEasting = new HtmlInputHidden();
-            hidEasting.ID = "easting";
-            hidNorthing = new HtmlInputHidden();
-            hidNorthing.ID = "northing";
+            hiddenLatitude = new HtmlInputHidden();
+            hiddenLatitude.ID = "latitude";
+            hiddenLongitude = new HtmlInputHidden();
+            hiddenLongitude.ID = "longitude";
 
             // Restore posted values
             if (this.Page.IsPostBack)
@@ -500,8 +507,8 @@ namespace Escc.FormControls.WebForms
                         this.tbxLocality.Text = this.Context.Request.Form[this.UniqueID + separator + this.tbxLocality.UniqueID];
                         this.tbxTown.Text = this.Context.Request.Form[this.UniqueID + separator + this.tbxTown.UniqueID];
                         this.tbxAdministrativeArea.Text = this.Context.Request.Form[this.UniqueID + separator + this.tbxAdministrativeArea.UniqueID];
-                        this.hidEasting.Value = this.Context.Request.Form[this.UniqueID + separator + this.hidEasting.UniqueID];
-                        this.hidNorthing.Value = this.Context.Request.Form[this.UniqueID + separator + this.hidNorthing.UniqueID];
+                        this.hiddenLatitude.Value = this.Context.Request.Form[this.UniqueID + separator + this.hiddenLatitude.UniqueID];
+                        this.hiddenLongitude.Value = this.Context.Request.Form[this.UniqueID + separator + this.hiddenLongitude.UniqueID];
                         this.UpdateFields();
                     }
                 }
@@ -582,63 +589,12 @@ namespace Escc.FormControls.WebForms
         /// <summary>
         /// Formats addresses for display in a list box.
         /// </summary>
-        /// <param name="ds">A DataSet containing paf addresses.</param>
-        private void FormatDataSet(DataSet ds)
+        /// <param name="addresses">The addresses.</param>
+        private void AddAddressesToControl(IList<AddressInfo> addresses)
         {
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            foreach (AddressInfo address in addresses)
             {
-                StringBuilder sb = new StringBuilder();
-
-                if (dr["BD"] != null & dr["BD"].ToString() != "")
-                {
-                    sb.Append(dr["BD"]).ToString();
-                }
-
-                if (dr["BN"] != null & dr["BN"].ToString() != "" & dr["BN"].ToString() != "0")
-                {
-                    if (sb.Length > 0)
-                    {
-                        sb.Append(", ");
-                    }
-                    sb.Append(dr["BN"]).ToString();
-                }
-
-                if (dr["DL"] != null & dr["DL"].ToString() != "")
-                {
-                    if (sb.Length > 0)
-                    {
-                        sb.Append(", ");
-                    }
-                    sb.Append(dr["DL"]).ToString();
-                }
-
-                if (dr["TN"] != null & dr["TN"].ToString() != "")
-                {
-                    if (sb.Length > 0)
-                    {
-                        sb.Append(", ");
-                    }
-                    sb.Append(dr["TN"]).ToString();
-                }
-
-                if (dr["PT"] != null & dr["PT"].ToString() != "")
-                {
-                    if (sb.Length > 0)
-                    {
-                        sb.Append(", ");
-                    }
-                    sb.Append(dr["PT"]).ToString();
-                }
-
-                if (dr["PC"] != null & dr["PC"].ToString() != "")
-                {
-                    if (sb.Length > 0)
-                    {
-                        sb.Append(", ");
-                    }
-                    sb.Append(dr["PC"]).ToString();
-                }
-                ListItem item = new ListItem(sb.ToString(), dr["OID"].ToString());
+                ListItem item = new ListItem(address.BS7666Address.GetSimpleAddress().ToString(", "), address.BS7666Address.Uprn);
                 lbxAddressChoices.Items.Add(item);
             }
         }
@@ -659,8 +615,8 @@ namespace Escc.FormControls.WebForms
             this.tbxTown.Text = this.town;
             this.tbxAdministrativeArea.Text = this.administrativeArea;
             this.tbxPostcode.Text = this.postcode;
-            this.hidEasting.Value = this.easting;
-            this.hidNorthing.Value = this.northing;
+            this.hiddenLatitude.Value = Latitude;
+            this.hiddenLongitude.Value = Longitude;
 
 
             bool addressPresent = (
@@ -688,8 +644,8 @@ namespace Escc.FormControls.WebForms
             this.town = this.tbxTown.Text;
             this.administrativeArea = this.tbxAdministrativeArea.Text;
             this.postcode = this.tbxPostcode.Text;
-            this.easting = this.hidEasting.Value;
-            this.northing = this.hidNorthing.Value;
+            this.Latitude = this.hiddenLatitude.Value;
+            this.Longitude = this.hiddenLongitude.Value;
         }
 
         #endregion
@@ -836,13 +792,8 @@ namespace Escc.FormControls.WebForms
             this.Controls.Add(lcpcb);
             postcodeLabel.AssociatedControlID = tbxPostcode.ID;
 
-
-            //EXTEND to hold Eastings and Northings
-
-
-
-            this.Controls.Add(hidEasting);
-            this.Controls.Add(hidNorthing);
+            this.Controls.Add(hiddenLatitude);
+            this.Controls.Add(hiddenLongitude);
 
             // Add a dummy textbox because when the address fields are hidden, postcode is the only textbox, 
             // and that means IE won't fire the .NET click event
@@ -1025,7 +976,7 @@ namespace Escc.FormControls.WebForms
         /// <param name="oid"></param>
         public void OnAddressConfirmed(string oid)
         {
-            //oid = oid;
+            //uprn = uprn;
             // check there are handlers for the event before raising
             if (this.AddressConfirmed != null)
             {
@@ -1043,57 +994,47 @@ namespace Escc.FormControls.WebForms
         protected void FormAddress_AddressConfirmed(object sender, AddressConfirmedEventArgs e)
         {
 
-            DataSet ds = HttpContext.Current.Session[this.UniqueID + this.questionID + "addresses"] as DataSet;
+            IList<AddressInfo> addresses = HttpContext.Current.Session[this.UniqueID + this.questionID + "addresses"] as IList<AddressInfo>;
 
             // If the addresses are not in session, perhaps because the session expired while the user was distracted,
             // try to get the addresses again to prevent an error. This happens surprisingly often.
-            if (ds == null)
-            {
-                using (var addressfinder = new AddressFinder.AddressFinder())
-                {
-                    try
-                    {
-                        if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesAccount"]) &&
-                                    !String.IsNullOrEmpty(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesPassword"]))
-                        {
-                            addressfinder.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesAccount"], ConfigurationManager.AppSettings["ConnectToCouncilWebServicesPassword"]);
-                        }
 
-                        ds = addressfinder.AddressesFromPostcode(this.tbxPostcode.Text);
-                    }
-                    catch (SoapException)
-                    {
-                        // web service returns the same message for all exceptions - we can localise
-                        lblMessage.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
-                        return;
-                    }
+            if (addresses == null)
+            {
+                try
+                {
+                    var addressfinder = new LocateApiAddressLookup(new Uri(ConfigurationManager.AppSettings["LocateApiAddressesUrl"]), ConfigurationManager.AppSettings["LocateApiToken"], new ConfigurationProxyProvider());
+                    addresses = addressfinder.AddressesFromPostcode(this.tbxPostcode.Text);
+                }
+                catch (WebException)
+                {
+                    // web service returns the same message for all exceptions - we can localise
+                    lblMessage.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
+                    return;
+                }
+                if (addresses.Count == 0)
+                {
+                    lblMessage.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
                 }
             }
 
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            foreach (AddressInfo address in addresses)
             {
-                if (dr["oid"].ToString() == e.Oid)
+                if (address.BS7666Address.Uprn == e.Uprn)
                 {
 
                     ToggleAddressFields(true);
 
-                    this.saon = dr["BD"].ToString();
-                    //amended to cope with building numbers of 0 instead of nulls in the underlying data tables RG 06/03/2006
-                    if (dr["BN"].ToString() != "0")
-                    {
-                        this.paon = dr["BN"].ToString();
-                    }
-                    this.streetDescriptor = dr["TN"].ToString();
-                    this.locality = dr["DL"].ToString();
-                    this.town = dr["PT"].ToString();
-                    this.administrativeArea = dr["CN"].ToString();
-                    this.postcode = dr["PC"].ToString();
-                    this.easting = dr["Easting"].ToString();
-                    this.northing = dr["Northing"].ToString();
-                    // removed due to absence of this field in the underlying data which has been changed 06/03/2006 RG
-                    //this.wardCode = dr["Ward_Code"].ToString();
-                    this.oa = dr["OA"].ToString();
-                    this.oid = e.Oid;
+                    this.saon = address.BS7666Address.Saon;
+                    this.paon = address.BS7666Address.Paon;
+                    this.streetDescriptor = address.BS7666Address.StreetName;
+                    this.locality = address.BS7666Address.Locality;
+                    this.town = address.BS7666Address.Town;
+                    this.administrativeArea = address.BS7666Address.AdministrativeArea;
+                    this.postcode = address.BS7666Address.Postcode;
+                    this.Latitude = address.GeoCoordinate.Latitude.ToString(CultureInfo.InvariantCulture);
+                    this.Longitude = address.GeoCoordinate.Longitude.ToString(CultureInfo.InvariantCulture);
+                    this.Uprn = e.Uprn;
 
                     this.UpdateTextboxes();
 
@@ -1113,29 +1054,21 @@ namespace Escc.FormControls.WebForms
             if (e.Postcode.Length > 0)
             {
                 lblMessage.Text = String.Empty;
-                DataSet ds = null;
+                IList<AddressInfo> addresses = null;
                 try
                 {
-                    using (var addressfinder = new AddressFinder.AddressFinder())
-                    {
-                        if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesAccount"]) &&
-                            !String.IsNullOrEmpty(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesPassword"]))
-                        {
-                            addressfinder.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["ConnectToCouncilWebServicesAccount"], ConfigurationManager.AppSettings["ConnectToCouncilWebServicesPassword"]);
-                        }
-
-                        ds = addressfinder.AddressesFromPostcode(e.Postcode);
-                    }
+                    var addressfinder = new LocateApiAddressLookup(new Uri(ConfigurationManager.AppSettings["LocateApiAddressesUrl"]), ConfigurationManager.AppSettings["LocateApiToken"], new ConfigurationProxyProvider());
+                    addresses = addressfinder.AddressesFromPostcode(e.Postcode);
 
                 }
-                catch (SoapException)
+                catch (WebException)
                 {
                     // web service returns the same message for all exceptions - we can localise
                     lblMessage.Text = LocalisedResourceReader.ResourceString(this.resourceFileName, "ErrorPostcodeNotFound", EsccWebTeam_FormControls.ErrorPostcodeNotFound);
                     return;
                 }
 
-                if (ds.Tables[0].Rows.Count == 0)
+                if (addresses.Count == 0)
                 {
                     if (this.enableValidaton)
                     {
@@ -1148,8 +1081,8 @@ namespace Escc.FormControls.WebForms
                 }
                 else
                 {
-                    HttpContext.Current.Session[this.UniqueID + this.questionID + "addresses"] = ds;
-                    FormatDataSet(ds);
+                    HttpContext.Current.Session[this.UniqueID + this.questionID + "addresses"] = addresses;
+                    AddAddressesToControl(addresses);
                     this.selectAddress.Visible = true;
                     this.ToggleAddressFields(false);
                 }
