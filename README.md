@@ -34,3 +34,11 @@ However, it also needs the source of the address data to be configured in `web.c
 This should be a `locate-api` service based on [https://github.com/alphagov/locate-api](https://github.com/alphagov/locate-api). If you need to configure a proxy server to access the service, use the format documented in the [Escc.Net](https://github.com/east-sussex-county-council/Escc.Net) project.
 
 The selected address is accessible via the control's `AddressInfo` property, or its `BS7666Address`, `Uprn`, `Latitude` and `Longitude` properties.
+
+## Recaptcha validation
+
+If you're using the invisible version of Google's Recaptcha you can place an instance of `RecaptchaValidator` on your page to handle the server-side check as part of the usual call to `Page.IsValid`. For this to work you need to add the secret key for your Recaptcha instance to `web.config`. You can find your secret key by logging into the Recaptcha website.
+
+	<appSettings>
+		<add key="GoogleRecaptchaSecretKey" value="xxxxxxxxxxxxxxxxxxxxx" />
+	</appSettings>
