@@ -16,6 +16,7 @@ using Escc.AddressAndPersonalDetails;
 using Escc.FormControls.WebForms.Properties;
 using Escc.FormControls.WebForms.Validators;
 using Escc.Net;
+using Escc.Net.Configuration;
 
 namespace Escc.FormControls.WebForms
 {

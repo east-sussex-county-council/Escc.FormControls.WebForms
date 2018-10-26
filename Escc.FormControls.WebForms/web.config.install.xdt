@@ -14,9 +14,9 @@
       <controls xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/pages/controls[2])" />
       <controls>
         <add namespace="Escc.FormControls.WebForms" xdt:Transform="Remove" xdt:Locator="Match(namespace)" />
-        <add tagPrefix="FormControls" namespace="Escc.FormControls.WebForms" assembly="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" xdt:Transform="Insert" />
+        <add tagPrefix="FormControls" namespace="Escc.FormControls.WebForms" assembly="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xdt:Transform="Insert" />
         <add namespace="Escc.FormControls.WebForms.Validators" xdt:Transform="Remove" xdt:Locator="Match(namespace)" />
-        <add tagPrefix="FormControls" namespace="Escc.FormControls.WebForms.Validators" assembly="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" xdt:Transform="Insert" />
+        <add tagPrefix="FormControls" namespace="Escc.FormControls.WebForms.Validators" assembly="Escc.FormControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xdt:Transform="Insert" />
       </controls>
     </pages>
   </system.web>

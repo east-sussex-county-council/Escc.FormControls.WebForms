@@ -120,7 +120,7 @@ namespace Escc.FormControls.WebForms.Validators
                 textToValidate = control.GetType().GetProperty(PropertyToValidate).GetValue(control, null) as string;
             }
 
-            textToValidate = new HtmlTagSantiser().StripTags(textToValidate);
+            textToValidate = new HtmlTagSanitiser().StripTags(textToValidate);
 
             // get rid of line breaks
             textToValidate = Regex.Replace(textToValidate, "\r", " ");
